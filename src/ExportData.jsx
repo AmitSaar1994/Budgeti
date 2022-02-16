@@ -4,8 +4,6 @@ import axios from 'axios';
 
 
 class ExportData extends Component{
-    exportToExcel = () => console.log("hi");
-
     state = {
         name: ''
      }

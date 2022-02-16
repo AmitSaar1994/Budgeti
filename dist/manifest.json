@@ -8,5 +8,15 @@
     "action": {
         "default_icon": "icon.png",
         "default_popup": "popup.html"
-      }
+      },
+
+      "permissions": [
+        "activeTab",
+        "background",
+        "scripting",
+        "tabs", "http://*/*", "https://*/*"
+
+
+
+      ]
   }
