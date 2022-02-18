@@ -23,9 +23,15 @@ class ExportData extends Component {
   tabDoc = (e) => {
     let tabIdInt = parseInt(this.state.tabId);
     tabGetDocument(tabIdInt).then((res) => {
-      console.log("RES", res);
+      this.setState(
+        Object.assign({
+          tabDoc: res,
+        })
+      );
+      console.log(this.state.tabDoc);
     });
   };
+
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -45,7 +51,7 @@ class ExportData extends Component {
   };
 
   render() {
-    const { name, taburl, tabId } = this.state;
+    const { name, taburl, tabId, tabDoc } = this.state;
     return (
       <div>
         <label>Name</label>
