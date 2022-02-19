@@ -1,7 +1,7 @@
-import React, { Component, useEffect } from "react";
-import axios from "axios";
+import React, { Component } from "react";
 import "regenerator-runtime/runtime";
 import "babel-polyfill";
+import scrapingCalData from "./scrapingCalData";
 import tabGetDocument from "./chrome_api/tabGetDocument";
 import getTabData from "./chrome_api/getTabData";
 
@@ -29,42 +29,15 @@ class ExportData extends Component {
         })
       );
       console.log(this.state.tabDoc);
+      scrapingCalData(this.state.tabDoc);
     });
-  };
-
-  changeHandler = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  submitHandler = (e) => {
-    e.preventDefault();
-    console.log(this.state);
-
-    axios
-      .post(
-        "https://sheet.best/api/sheets/dfbe7b03-f9ef-45a2-aa05-82600f0494b4",
-        this.state
-      )
-      .then((response) => {
-        console.log(response);
-      });
   };
 
   render() {
     const { name, taburl, tabId, tabDoc } = this.state;
     return (
       <div>
-        <label>Name</label>
-        <h1>{taburl}</h1>
-        <h1>{tabId}</h1>
-        <input
-          placeholder="Enter your name"
-          type="text"
-          name="name"
-          value={name}
-          onChange={this.changeHandler}
-        />
-        <button onClick={this.submitHandler}>Send</button>
+        <h1>Scraping Data</h1>
         <button onClick={this.tabDoc}>TabDoc</button>
       </div>
     );
